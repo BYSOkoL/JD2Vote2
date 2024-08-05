@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vote</title>
+    <style>
+        body{
+           background-color: rgb(255, 255, 254);
+        }
+    </style>
+</head>
+<body>
+<form name="form" method="post" action="http://localhost:8080/first-web-app-2-1.0-SNAPSHOT/vote">
+
+    <p><label>Singers:</label>
+        <label>
+            <input type="radio" name="singer" value="s1"/>
+        </label> s1
+        <label>
+            <input type="radio" name="singer" value="s2"/>
+        </label> s2
+        <label>
+            <input type="radio" name="singer" value="s3"/>
+        </label> s3
+        <label>
+            <input type="radio" name="singer" value="s4"/>
+        </label> s4
+    </p><br/>
+
+    <p>style:
+        <br/>
+        <label>
+            <input type="checkbox" name="style" value="a1" />
+        </label> a1
+        <label>
+            <input type="checkbox" name="style" value="a2" />
+        </label> a2
+        <label>
+            <input type="checkbox" name="style" value="a3" />
+        </label> a3
+        <label>
+            <input type="checkbox" name="style" value="a4" />
+        </label> a4
+        <label>
+            <input type="checkbox" name="style" value="a5" />
+        </label> a5
+        <label>
+            <input type="checkbox" name="style" value="a6" />
+        </label>a6
+        <label>
+            <input type="checkbox" name="style" value="a7" />
+        </label> a7
+        <label>
+            <input type="checkbox" name="style" value="a8" />
+        </label> a8
+        <label>
+            <input type="checkbox" name="style" value="9" />
+        </label> 9
+        <label>
+            <input type="checkbox" name="style" value="10" />
+        </label> 10
+    </p>
+
+
+    <p>Write short message:
+        <label>
+            <textarea name="message"></textarea>
+        </label></p>
+
+    <input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>
