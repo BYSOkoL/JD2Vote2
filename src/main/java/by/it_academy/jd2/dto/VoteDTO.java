@@ -1,45 +1,29 @@
 package by.it_academy.jd2.dto;
 
-import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
-//DTO - Data Transfer Object
 public class VoteDTO {
-    private String singer;
-    private String[] style;
-    private String message;
+    private final Long voiceForSinger;
+    private final List<Long> voicesForStyles;
+    private final String message;
 
-    public VoteDTO() {
-    }
-
-    public VoteDTO(String singer, String[] style, String message) {
-        this.singer = singer;
-        this.style = style;
+    public VoteDTO(Long voiceForSinger, List<Long> voicesForStyles, String message) {
+        this.voiceForSinger = voiceForSinger;
+        this.voicesForStyles = voicesForStyles;
         this.message = message;
     }
 
-    public String getSinger() {
-        return singer;
+    public Long getVoiceForSinger() {
+        return voiceForSinger;
     }
 
-    public void setSinger(String artist) {
-        this.singer = singer;
-    }
-
-    public String[] getStyle() {
-        return style;
-    }
-
-    public void setStyle(String[] genre) {
-        this.style = style;
+    public List<Long> getVoicesForStyles() {
+        return voicesForStyles;
     }
 
     public String getMessage() {
         return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     @Override
@@ -47,22 +31,20 @@ public class VoteDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         VoteDTO voteDTO = (VoteDTO) o;
-        return Objects.equals(singer, voteDTO.singer) && Arrays.equals(style, voteDTO.style) && Objects.equals(message, voteDTO.message);
+        return Objects.equals(voiceForSinger, voteDTO.voiceForSinger) && Objects.equals(voicesForStyles, voteDTO.voicesForStyles) && Objects.equals(message, voteDTO.message);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(singer, message);
-        result = 31 * result + Arrays.hashCode(style);
-        return result;
+        return Objects.hash(voiceForSinger, voicesForStyles, message);
     }
 
     @Override
     public String toString() {
-        return "VoteDTO{" +
-                "artist='" + singer + '\'' +
-                ", genre=" + Arrays.toString(style) +
-                ", about='" + message + '\'' +
+        return "VoteDto{" +
+                "voiceForSinger=" + voiceForSinger +
+                ", voicesForStyles=" + voicesForStyles +
+                ", message='" + message + '\'' +
                 '}';
     }
 }
