@@ -4,9 +4,9 @@ package by.it_academy.jd2.controllers.servlet;
 import by.it_academy.jd2.services.VoteDAO;
 
 import by.it_academy.jd2.services.factory.DAOVoteFactory;
-import by.it_academy.jd2.util.dbresult.ArtistVoteCount;
-import by.it_academy.jd2.util.dbresult.GenreVoteCount;
-import by.it_academy.jd2.util.dbresult.VoteMessage;
+import by.it_academy.jd2.dto.dbresult.ArtistVoteCount;
+import by.it_academy.jd2.dto.dbresult.GenreVoteCount;
+import by.it_academy.jd2.dto.dbresult.VoteMessage;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

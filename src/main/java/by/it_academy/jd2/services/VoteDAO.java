@@ -1,9 +1,9 @@
 package by.it_academy.jd2.services;
 
 import by.it_academy.jd2.util.DBUtils;
-import by.it_academy.jd2.util.dbresult.ArtistVoteCount;
-import by.it_academy.jd2.util.dbresult.GenreVoteCount;
-import by.it_academy.jd2.util.dbresult.VoteMessage;
+import by.it_academy.jd2.dto.dbresult.ArtistVoteCount;
+import by.it_academy.jd2.dto.dbresult.GenreVoteCount;
+import by.it_academy.jd2.dto.dbresult.VoteMessage;
 import java.sql.*;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;

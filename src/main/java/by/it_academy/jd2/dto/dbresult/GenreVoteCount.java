@@ -1,4 +1,4 @@
-package by.it_academy.jd2.util.dbresult;
+package by.it_academy.jd2.dto.dbresult;
 
 public class GenreVoteCount {
     private final String genreName;
