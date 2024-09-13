@@ -1,29 +1,41 @@
 package by.it_academy.jd2.services;
 
-
-import by.it_academy.jd2.dto.StyleDTO;
+import by.it_academy.jd2.entity.Genre;
 import by.it_academy.jd2.services.api.IStyleService;
-import by.it_academy.jd2.storage.api.IStylesStorage;
-
-import java.util.List;
+import by.it_academy.jd2.storage.api.IStorage;
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StyleService implements IStyleService {
-    private final IStylesStorage<StyleDTO> stylesStorage;
-
-    public StyleService(IStylesStorage<StyleDTO> stylesStorage) {
-        this.stylesStorage = stylesStorage;
+    private final IStorage<Genre> genreStorage;
+    public StyleService(IStorage<Genre> genreStorage){
+        this.genreStorage = genreStorage;
     }
 
     @Override
-    public List<StyleDTO>  getContent() {
-        return stylesStorage.readAll();
+    public Long create(String name) {
+        Genre genre = new Genre(name);
+        return genreStorage.create(genre);
     }
 
     @Override
-    public boolean exist(Long id) {
-        if(id == null){
-            throw new IllegalArgumentException("Style title is null");
+    public String get(Long id) {
+        Genre genre = genreStorage.get(id);
+        return genre.getName();
+    }
+
+    @Override
+    public Map<Long, String> getAll() {
+        Map<Long, Genre> longStringMap = genreStorage.getAll();
+        return longStringMap.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().getName()));  //сохраняю старую структуру
+    }
+
+    public boolean delete(Long id) {
+        try {
+            return genreStorage.delete(id);
+        } catch (SQLException e) {
+            throw new RuntimeException("Ошибка при удалении из базы данных" ,e);
         }
-        return stylesStorage.exist(id);
     }
 }

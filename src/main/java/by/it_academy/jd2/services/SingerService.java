@@ -1,29 +1,45 @@
 package by.it_academy.jd2.services;
 
-import by.it_academy.jd2.dto.SingerDTO;
+import by.it_academy.jd2.entity.Artist;
 import by.it_academy.jd2.services.api.ISingerService;
-import by.it_academy.jd2.storage.api.ISingersStorage;
+import by.it_academy.jd2.storage.api.IStorage;
 
-import java.util.List;
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class SingerService implements ISingerService {
 
-
-    private final ISingersStorage<SingerDTO> singerStorage;
-
-    public SingerService(ISingersStorage<SingerDTO> singerStorage) {
-        this.singerStorage = singerStorage;
+    private final IStorage<Artist> artistStorage;
+    public SingerService(IStorage<Artist> artistStorage) {
+        this.artistStorage = artistStorage;
     }
 
     @Override
-    public List<SingerDTO> getContent() {
-        return singerStorage.readAll();
+    public Long create(String name) {
+        Artist artist = new Artist(name);
+        return artistStorage.create(artist);
     }
 
-    public boolean exist(Long id) {
-        if(id == null){
-            throw new IllegalArgumentException("Singer is null");
+    @Override
+    public String get(Long id) {
+        Artist artist = artistStorage.get(id);
+        return artist.getName();
+    }
+
+    @Override
+    public Map<Long, String> getAll() {
+        Map<Long, Artist> longArtistMap = artistStorage.getAll();
+        return longArtistMap.entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().getName()));
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        try {
+            return artistStorage.delete(id);
+        } catch (SQLException e) {
+            throw new RuntimeException("Ошибка при удалении из базы данных" ,e);
         }
-        return singerStorage.exist(id);
     }
 }

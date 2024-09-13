@@ -3,14 +3,14 @@ package by.it_academy.jd2.entity;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-public class VoteEntity {
+public class Vote {
     private Long id;
     private List<Long> genresId;
     private final Long artistId;
     private final String info;
     private final OffsetDateTime createdAt;
 
-    private VoteEntity(List<Long> genresId, Long artistId, String info, OffsetDateTime createdAt, Long id ) {
+    private Vote(List<Long> genresId, Long artistId, String info, OffsetDateTime createdAt, Long id ) {
         this.genresId = genresId;
         this.artistId = artistId;
         this.info = info;
@@ -85,8 +85,8 @@ public class VoteEntity {
             return this;
         }
 
-        public VoteEntity build() {
-            return new VoteEntity(genresId, artistId, info, createdAt, id);
+        public Vote build() {
+            return new Vote(genresId, artistId, info, createdAt, id);
         }
     }
 }

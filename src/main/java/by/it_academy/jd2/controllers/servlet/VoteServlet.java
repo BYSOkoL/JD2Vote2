@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 
 
 @WebServlet(urlPatterns = "/vote")
-public class FormForVoteServlet extends HttpServlet {
+public class VoteServlet extends HttpServlet {
     public static final String PARAM_GENRE = "genre";
     public static final String PARAM_SINGER = "singer";
     public static final String PARAM_INFO = "info";

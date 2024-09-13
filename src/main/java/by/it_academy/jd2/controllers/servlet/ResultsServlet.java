@@ -3,6 +3,7 @@ package by.it_academy.jd2.controllers.servlet;
 
 import by.it_academy.jd2.services.VoteDAO;
 
+import by.it_academy.jd2.services.factory.DAOVoteFactory;
 import by.it_academy.jd2.util.dbresult.ArtistVoteCount;
 import by.it_academy.jd2.util.dbresult.GenreVoteCount;
 import by.it_academy.jd2.util.dbresult.VoteMessage;
@@ -18,13 +19,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-@WebServlet(urlPatterns = "/resultOfVote")
+@WebServlet("/results")
 public class ResultsServlet extends HttpServlet {
-    private VoteDAO voteDAO = new VoteDAO();
+    private VoteDAO voteDAO = DAOVoteFactory.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Получение данных из базы данных
+
         List<GenreVoteCount> genreVoteCounts = null;
         try {
             genreVoteCounts = voteDAO.getGenreVoteCounts();
@@ -34,13 +35,13 @@ public class ResultsServlet extends HttpServlet {
         List<ArtistVoteCount> artistVoteCounts = voteDAO.getArtistVoteCounts();
         List<VoteMessage> voteMessages = voteDAO.getVoteMessages();
 
-        // Установка атрибутов для передачи на JSP
+
         request.setAttribute("genreVoteCounts", genreVoteCounts);
         request.setAttribute("artistVoteCounts", artistVoteCounts);
         request.setAttribute("voteMessages", voteMessages);
 
-        // Перенаправление на JSP страницу
-        RequestDispatcher dispatcher = request.getRequestDispatcher("results.jsp");
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/results.jsp");
         dispatcher.forward(request, response);
     }
 }

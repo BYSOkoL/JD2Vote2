@@ -1,16 +1,14 @@
-package by.it_academy.jd2.storage.db.factory;
+package by.it_academy.jd2.storage.database.factory;
 
-import by.it_academy.jd2.entity.VoteEntity;
+import by.it_academy.jd2.entity.Vote;
 import by.it_academy.jd2.storage.api.IStorage;
-import by.it_academy.jd2.storage.db.VoteStorageDB;
+import by.it_academy.jd2.storage.database.VoteStorageDB;
 
 public class VoteStorageDBFactory {
-    private static final IStorage<VoteEntity> instance = new VoteStorageDB();
-
+    private static final IStorage<Vote> instance = new VoteStorageDB();
     private VoteStorageDBFactory() {}
 
-    public static IStorage<VoteEntity> getInstance() {
+    public static IStorage<Vote> getInstance() {
         return instance;
     }
-
 }

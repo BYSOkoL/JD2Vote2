@@ -1,50 +1,78 @@
 package by.it_academy.jd2.dto;
 
-import java.util.List;
-import java.util.Objects;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 
 public class VoteDTO {
-    private final Long voiceForSinger;
-    private final List<Long> voicesForStyles;
-    private final String message;
+    private String singer;
+    private String[] styles;
+    private String message;
+    private LocalDateTime dateTime;
 
-    public VoteDTO(Long voiceForSinger, List<Long> voicesForStyles, String message) {
-        this.voiceForSinger = voiceForSinger;
-        this.voicesForStyles = voicesForStyles;
+    public VoteDTO(String singer, String[] styles, String message, LocalDateTime dateTime) {
+        this.singer = singer;
+        this.styles = styles;
         this.message = message;
+        this.dateTime = dateTime;
     }
 
-    public Long getVoiceForSinger() {
-        return voiceForSinger;
+    public String getSinger() {
+        return singer;
     }
 
-    public List<Long> getVoicesForStyles() {
-        return voicesForStyles;
+    public String[] getStyles() {
+        return styles;
     }
 
     public String getMessage() {
         return message;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        VoteDTO voteDTO = (VoteDTO) o;
-        return Objects.equals(voiceForSinger, voteDTO.voiceForSinger) && Objects.equals(voicesForStyles, voteDTO.voicesForStyles) && Objects.equals(message, voteDTO.message);
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(voiceForSinger, voicesForStyles, message);
+    public static BuilderVoteDTO builder() {
+        return new BuilderVoteDTO();
+    }
+
+    public static class BuilderVoteDTO {
+        private String singer;
+        private String[] styles;
+        private String message;
+        private LocalDateTime dateTime;
+
+        public BuilderVoteDTO setStyles(String[] janres) {
+            this.styles = janres;
+            return this;
+        }
+
+        public BuilderVoteDTO setSinger(String singer) {
+            this.singer = singer;
+            return this;
+        }
+
+        public BuilderVoteDTO setDateTime(LocalDateTime dateTime) {
+            this.dateTime = dateTime;
+            return this;
+        }
+
+        public BuilderVoteDTO setMessage(String message) {
+            this.message = message;
+            return this;
+        }
+
+        public VoteDTO build() {
+            return new VoteDTO(singer, styles,message, dateTime);
+        }
     }
 
     @Override
     public String toString() {
-        return "VoteDto{" +
-                "voiceForSinger=" + voiceForSinger +
-                ", voicesForStyles=" + voicesForStyles +
-                ", message='" + message + '\'' +
+        return "InfoFromUser{" +
+                "janres=" + Arrays.toString(styles) +
+                ", singer=" + singer +
+                ", date='" + dateTime + '\'' +
                 '}';
     }
 }

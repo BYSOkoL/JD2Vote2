@@ -1,10 +1,11 @@
 package by.it_academy.jd2.services.api;
 
-import by.it_academy.jd2.dto.SingerDTO;
-
 import java.util.List;
+import java.util.Map;
 
-public interface ISingerService {
-    List<SingerDTO> getContent();
-    boolean exist(Long id);
+public interface ISingerService <T, t> {
+    Long create(String name);
+    String get(Long id);
+    Map<T, t> getAll();
+    boolean delete(Long id);
 }

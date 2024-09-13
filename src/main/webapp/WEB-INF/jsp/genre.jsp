@@ -73,37 +73,37 @@
 
 
     <h4>Существующие жанры:</h4>
-    <c:forEach var="janre" items="${requestScope.janres}">
-        <span>${janre.value}</span>
+    <c:forEach var="genre" items="${requestScope.genres}">
+        <span>${genre.value}</span>
     </c:forEach>
 
-    <form action="${pageContext.request.contextPath}/service/genre" method="post">
+    <form action="${pageContext.request.contextPath}/admin/genre" method="post">
         <h4>Добавить новый жанр:</h4>
 
-        <label for="janreID">
-            <input type="text" name="janre" id="janreID" size="80" required>
+        <label for="genreID">
+            <input type="text" name="genre" id="genreID" size="80" required>
         </label>
         <button type="submit">Отправить</button>
 
-        <c:if test="${not empty requestScope.janreErr}">
+        <c:if test="${not empty requestScope.genreErr}">
             <div class="error-message">
                 <span>${requestScope.janreErr}</span>
             </div>
         </c:if>
-        <c:if test="${not empty requestScope.janreAdd}">
+        <c:if test="${not empty requestScope.genreAdd}">
             <div class="success-message">
-                <span>${requestScope.janreAdd}</span>
+                <span>${requestScope.genreAdd}</span>
             </div>
         </c:if>
     </form>
 
     <h3>Удалить жанр:</h3>
-    <form action="${pageContext.request.contextPath}/service/genre" method="post">
+    <form action="${pageContext.request.contextPath}/admin/genre" method="post">
         <h4>Выберите жанр для удаления:</h4>
 
         <select name="deleteGenre" id="delete">
-            <c:forEach var="janre" items="${requestScope.janres}">
-                <option value="${janre.key}">${janre.value}</option>
+            <c:forEach var="genre" items="${requestScope.genres}">
+                <option value="${genre.key}">${genre.value}</option>
             </c:forEach>
         </select>
         <button type="submit">Удалить</button>

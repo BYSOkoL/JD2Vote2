@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +26,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             width: 100%;
+            position: relative;
         }
 
         h2 {
@@ -73,11 +74,44 @@
         .error-messages span {
             display: block;
         }
+
+        .admin-links {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .admin-links a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .admin-links a:hover {
+            color: #45a049;
+        }
+
+        .link-left {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+
+        .link-right {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <div class="admin-links">
+        <a href="${pageContext.request.contextPath}/admin/artist" class="link-left">Управление артистами</a>
+        <a href="${pageContext.request.contextPath}/admin/genre" class="link-right">Управление Жанрами</a>
+    </div>
+
     <h2>Голосование</h2>
     <form action="${pageContext.request.contextPath}/vote" method="post">
         <div>
@@ -91,9 +125,9 @@
 
         <div>
             <h4>Выберите жанр</h4>
-            <c:forEach var="janre" items="${requestScope.janres}">
+            <c:forEach var="genre" items="${requestScope.genres}">
                 <label>
-                    <input type="checkbox" name="janre" value="${janre.key}">${janre.value}
+                    <input type="checkbox" name="genre" value="${genre.key}">${genre.value}
                 </label>
             </c:forEach>
         </div>

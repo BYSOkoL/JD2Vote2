@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 @WebFilter("/*")
-public class EncodingFilter implements Filter {
+public class FilterCharacterEncoding implements Filter {
 
     public static final String TEXT_HTML_CONTENT_TYPE = "text/html";
 

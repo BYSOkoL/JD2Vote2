@@ -1,4 +1,4 @@
-package by.it_academy.jd2.services.factory.factory;
+package by.it_academy.jd2.services.factory;
 
 
 import by.it_academy.jd2.services.VoteService;
@@ -11,8 +11,9 @@ import by.it_academy.jd2.util.VoteToEnt;
 public class ServiceVoteFactory {
     private static final IVoteService instance = new VoteService(
             VoteStorageDBFactory.getInstance(),
-            Validate validate,
-            VoteToEnt voteToEntity);
+            Validate.getInstance(),
+            VoteToEnt.getInstance()
+    );
 
     private ServiceVoteFactory() {
     }

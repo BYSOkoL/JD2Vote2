@@ -101,11 +101,11 @@
     <form action="${pageContext.request.contextPath}/admin/artist" method="post">
         <h4>Выберите исполнителя для удаления:</h4>
 
-        <select name="deleteArtist" id="delete">
-            <c:forEach var="artist" items="${requestScope.artist}">
-                <option value="${artist.key}">${artist.value}</option>
-            </c:forEach>
-        </select>
+        <select name = "deleteArtist" id = "delete">
+                    <c:forEach var="artist" items = "${requestScope.artistList}">
+                        <option value = ${artist.key}>${artist.value}</option>
+                    </c:forEach>
+                 </select>
         <button type="submit">Удалить</button>
 
         <c:if test="${not empty requestScope.deleteArtistErr}">
