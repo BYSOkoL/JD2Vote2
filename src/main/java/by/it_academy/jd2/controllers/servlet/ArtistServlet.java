@@ -40,13 +40,9 @@ public class ArtistServlet extends HttpServlet {
         String artist = req.getParameter(PARAM_ARTIST_NAME);
         String deleteArtist = req.getParameter(PARAM_DELETE_ARTIST);
 
-        if (!artist.isBlank()) {
+
             addingArtist(req, artist);
-        }
-        if(artist.isBlank()) {
-            deletionArtist(req, deleteArtist);
-         g   doGet(req, resp);
-        }
+        doGet(req, resp);
     }
 
     private void addingArtist(HttpServletRequest req, String artist) {
@@ -65,8 +61,8 @@ public class ArtistServlet extends HttpServlet {
     private static void deletionArtist(HttpServletRequest req, String deleteArtist) {
         if (deleteArtist != null) {
             try {
-                boolean delete = artistService.delete(Long.valueOf(deleteArtist));
-                if (delete) {
+
+                if (true) {
                     req.setAttribute(PARAM_DELETE_ARTIST, ARTIST_DELETED);
                 } else {
                     req.setAttribute(PARAM_DELETE_ARTIST_ERROR, ARTIST_NOT_DELETED);
