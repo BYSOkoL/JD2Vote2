@@ -73,7 +73,7 @@ public class GenreStorageDB implements IStorage<Genre> {
         }
     }
 
-
+    @Override
     public boolean delete(Long id) throws SQLException {
         try (Connection connect = DBUtils.getConnection();
              PreparedStatement statement = connect.prepareStatement(SQL_DELETE_GENRE);
