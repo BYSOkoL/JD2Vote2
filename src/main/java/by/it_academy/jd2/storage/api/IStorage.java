@@ -1,12 +1,15 @@
 package by.it_academy.jd2.storage.api;
 
-import java.util.List;
+import java.sql.SQLException;
+import java.util.Map;
 
-public interface IStorage<T> {
-    void create(T t);
+public interface IStorage <T> {
 
-    List<T> readAll();
+    Long create(T t);
 
-    void delete(T t);
+    T get(Long id);
 
+    Map<Long, T> getAll();
+
+    boolean delete(Long id) throws SQLException;
 }
