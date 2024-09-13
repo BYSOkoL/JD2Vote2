@@ -43,9 +43,9 @@ public class ArtistServlet extends HttpServlet {
         if (!artist.isBlank()) {
             addingArtist(req, artist);
         }
-        if(artist.isBlank()){
-        deletionArtist(req, deleteArtist);
-        doGet(req, resp);
+        if(artist.isBlank()) {
+            deletionArtist(req, deleteArtist);
+         g   doGet(req, resp);
         }
     }
 
