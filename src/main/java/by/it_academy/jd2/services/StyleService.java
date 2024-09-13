@@ -35,7 +35,7 @@ public class StyleService implements IStyleService {
         try {
             return genreStorage.delete(id);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Ошибка при удалении из базы данных" ,e);
         }
     }
 }
