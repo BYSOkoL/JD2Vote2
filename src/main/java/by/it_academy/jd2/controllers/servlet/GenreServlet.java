@@ -41,11 +41,11 @@ public class GenreServlet extends HttpServlet {
         String genre = req.getParameter("genre");
         String deleteGenre = req.getParameter(PARAM_DELETE_GENRE);
 
-        if(genre != null) {
+        if(!genre.isBlank()) {
             addingGenre(req, genre);
         }
 
-        if(deleteGenre != null) {
+        if(genre.isBlank()) {
             deletionGenre(req, deleteGenre);
         }
 
